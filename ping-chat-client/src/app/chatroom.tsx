@@ -1,6 +1,6 @@
 "use client"; // This is a client component
 import React, { useState, useEffect } from "react";
-import ChatMessage from "./chatmessage";
+import ChatMessage from "../components/chatmessage";
 
 import io  from "socket.io-client";
 
@@ -47,21 +47,20 @@ function ChatRoom() {
   }
 
   return (
-    <div className="chat-room">
-      <ChatMessage />
-      <ul>
+    <div className="flex flex-col h-screen">
+      
+      <ul className="overflow-auto p-2 pb-16">
         {messages.map((message, index) => (
-          <li key={index}>{message}</li>
+          <ChatMessage key={index} message={message} date={new Date()}/>
         ))}
       </ul>
 
-      <input
-        type="text"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-      />
-
-      <button onClick={sendMessage}>send</button>
+      <div className="fixed bottom-0 left-0 w-full p-2 bg-white">
+        <div className="flex items-center border border-gray-300 rounded-md">
+          <input className="flex-grow p-2 rounded-l-md" type="text" placeholder="Type a message" value={message} onChange={(e) => setMessage(e.target.value)} />
+          <button className="p-2 bg-blue-500 text-white rounded-r-md" onClick={sendMessage}>Send</button>
+        </div>
+      </div>
     </div>
   );
 }
