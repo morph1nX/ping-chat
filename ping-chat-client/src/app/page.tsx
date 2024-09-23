@@ -1,7 +1,5 @@
-import { io } from "socket.io-client";
 import ChatRoom from "./chatroom";
-
-const socket = io('http://localhost:3000');
+import SignUp from "@/pages/signup";
 
 function App() {
 
@@ -9,7 +7,7 @@ function App() {
 
     <div className="App">
       <ChatRoom />
-
+      <SignUp />
     </div>
 
   );
