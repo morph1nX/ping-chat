@@ -1,5 +1,6 @@
 "use client"; // This is a client component
 import { useState } from "react"
+import "tailwindcss/tailwind.css"
 
 function SignUp () {
 

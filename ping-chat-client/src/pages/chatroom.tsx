@@ -1,6 +1,7 @@
 "use client"; // This is a client component
 import React, { useState, useEffect } from "react";
 import ChatMessage from "../components/chatmessage";
+import "tailwindcss/tailwind.css"
 
 import io  from "socket.io-client";
 
