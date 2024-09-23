@@ -15,11 +15,7 @@ function ChatRoom() {
 
   useEffect(() => {
 
-    if(socket) {
-      socket.disconnect();
-    }
-
-    const socketIo = io("http://localhost:3001");
+    const socketIo = io("https://showy-dune-giganotosaurus.glitch.me");
 
     setSocket(socketIo)
     console.log('set socket')
