@@ -7,7 +7,7 @@ function App() {
 return (
   <div>
 <SignUp />
-<ChatRoom />
+{/* <ChatRoom /> */}
   </div>
 )
 

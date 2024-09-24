@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 import ChatMessage from "../components/chatmessage";
 import "tailwindcss/tailwind.css"
+import app from '../utilities/firebase'
+import {getAuth, } from 'firebase/auth'
 
 import io  from "socket.io-client";
 
@@ -11,6 +13,9 @@ function ChatRoom() {
   const [messages, setMessages] = useState<string[]>([]);
 
   const [socket, setSocket] = useState<any>()
+
+  const auth = getAuth(app)
+  const currentUser = auth.currentUser && auth.currentUser.displayName || ''
 
   
 
@@ -48,7 +53,7 @@ function ChatRoom() {
       
       <ul className="overflow-auto p-2 pb-16">
         {messages.map((message, index) => (
-          <ChatMessage key={index} message={message} date={new Date()}/>
+          <ChatMessage key={index} message={message} date={new Date()} user={currentUser}/>
         ))}
       </ul>
 
