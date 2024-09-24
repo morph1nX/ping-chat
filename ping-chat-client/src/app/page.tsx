@@ -1,18 +1,16 @@
-import { io } from "socket.io-client";
-import ChatRoom from "./chatroom";
-
-const socket = io('http://localhost:3000');
+import ChatRoom from "../pages/chatroom";
+import SignUp from "@/pages/signup";
+import "tailwindcss/tailwind.css"
 
 function App() {
 
-  return (
+return (
+  <div>
+<SignUp />
+{/* <ChatRoom /> */}
+  </div>
+)
 
-    <div className="App">
-      <ChatRoom />
-
-    </div>
-
-  );
 
 }
 
