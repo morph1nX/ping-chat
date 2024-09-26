@@ -2,17 +2,15 @@
 import { useState } from "react"
 import "tailwindcss/tailwind.css"
 import app from '../utilities/firebase'
-import {getAuth, createUserWithEmailAndPassword, updateProfile} from 'firebase/auth'
+import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
 import {useRouter} from 'next/navigation'
 
 
 
 
 
-function SignUp () {
+function SignIn () {
 
-
-    const [username, setUsername] = useState<string>('')
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const auth = getAuth(app)
@@ -20,19 +18,14 @@ function SignUp () {
 
     const handleSubmit =  (event: any) => {
         event.preventDefault()
-        console.log('here?', username, password)
         if (email && password) {
-            console.log('h?', username, password)
 
-            createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
+            signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
                 const user = userCredential.user
-                if (username) {
 
-                    updateProfile(user, {displayName: username})
-                }
-                console.log('logged in as ', user)
+                console.log('logged in as ', user.email)
             }).then(() => {
-                router.push('/signin')
+                router.push('/chatroom')
             }).catch((error) => {
                 const errorCode = error.code
                 const errorMessage = error.message
@@ -45,16 +38,6 @@ function SignUp () {
     return (
         <div className="flex items-center justify-center min-h-screen">
   <form onSubmit={handleSubmit} className="flex flex-col p-4 bg-white rounded shadow-md">
-  <label className="mb-2">
-      Username:
-      <input
-        className="flex-grow p-2 rounded-l-md border border-gray-300"
-        type="text"
-        placeholder="Enter name"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-    </label>
     <label className="mb-2">
       Email:
       <input
@@ -83,4 +66,4 @@ function SignUp () {
     )
 }
 
-export default SignUp;
+export default SignIn;

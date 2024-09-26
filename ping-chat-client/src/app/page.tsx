@@ -1,12 +1,12 @@
 import ChatRoom from "../pages/chatroom";
-import SignUp from "@/pages/signup";
+import SignIn from "@/pages/signin";
 import "tailwindcss/tailwind.css"
 
 function App() {
 
 return (
   <div>
-<SignUp />
+<SignIn />
 {/* <ChatRoom /> */}
   </div>
 )

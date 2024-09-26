@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import ChatMessage from "../components/chatmessage";
 import "tailwindcss/tailwind.css"
 import app from '../utilities/firebase'
-import {getAuth, } from 'firebase/auth'
+import {getAuth, signOut} from 'firebase/auth'
+import {useRouter} from 'next/navigation'
 
 import io  from "socket.io-client";
 
@@ -15,7 +16,8 @@ function ChatRoom() {
   const [socket, setSocket] = useState<any>()
 
   const auth = getAuth(app)
-  const currentUser = auth.currentUser && auth.currentUser.displayName || ''
+  const currentUser = auth.currentUser && auth.currentUser.displayName
+  const router = useRouter()
 
   
 
@@ -25,12 +27,19 @@ function ChatRoom() {
 
     setSocket(socketIo)
     console.log('set socket')
+    // console.log('user', currentUser.displayName)
 
       socketIo.on("message", (message: string) => {
         console.log("new message: ", message);
   
         setMessages((messages) => [...messages, message]);
       });
+
+      socketIo.on('user disconnected', () => {
+        // signOut(auth).then((user) => console.log('signedout', user )).catch((error) => console.log('errorsignput', error))
+        console.log('yep echoed back')
+        router.push('/signin')
+      })
 
       return () => {
         socketIo.disconnect()
@@ -48,8 +57,14 @@ function ChatRoom() {
     
   }
 
+  function handleLogout() {
+    signOut(auth).then(() => console.log('signedout' )).catch((error) => console.log('errorsignput', error))
+    socket.emit('disconnect user')
+  }
+
   return (
     <div className="flex flex-col h-screen">
+      <button className="p-2 bg-blue-500 text-white rounded-r-md" onClick={handleLogout}>Logout</button>
       
       <ul className="overflow-auto p-2 pb-16">
         {messages.map((message, index) => (
