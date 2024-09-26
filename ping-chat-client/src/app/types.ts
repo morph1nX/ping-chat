@@ -1,6 +1,6 @@
 export interface ChatMessageProps {
-    message: string;
-    // user: User;
-    date: Date;
-    user: string | null;
+  message: string;
+  // user: User;
+  date: Date;
+  user: string | null;
 }
