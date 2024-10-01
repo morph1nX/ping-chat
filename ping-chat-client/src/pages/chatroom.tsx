@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import io from "socket.io-client";
 
 function ChatRoom() {
-  const [message, setMessage] = useState<string>("");
+  const [messageText, setMessageText] = useState<string>("");
 
   const [messages, setMessages] = useState<string[]>([]);
 
@@ -45,9 +45,9 @@ function ChatRoom() {
 
   function sendMessage() {
     if (socket) {
-      socket.emit("message", message);
+      socket.emit("message", messageText);
 
-      setMessage("");
+      setMessageText("");
 
       console.log("sent");
     }
@@ -86,8 +86,8 @@ function ChatRoom() {
             className="flex-grow p-2 rounded-l-md"
             type="text"
             placeholder="Type a message"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
+            value={messageText}
+            onChange={(e) => setMessageText(e.target.value)}
           />
           <button
             className="p-2 bg-blue-500 text-white rounded-r-md"
