@@ -1,6 +1,6 @@
 "use client"; // This is a client component
 import { useState } from "react";
-import "tailwindcss/tailwind.css";
+// import "tailwindcss/tailwind.css";
 import app from "../utilities/firebase";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
