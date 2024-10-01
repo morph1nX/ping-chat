@@ -1,17 +1,17 @@
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDsRdbKrjki2HZKcs7YiJF3dFTLYSXXdMc",
+  apiKey: process.env.apiKey,
 
-  authDomain: "ping-chat-web.firebaseapp.com",
+  authDomain: process.env.authDomain,
 
-  projectId: "ping-chat-web",
+  projectId: process.env.projectId,
 
-  storageBucket: "ping-chat-web.appspot.com",
+  storageBucket: process.env.storageBucket,
 
-  messagingSenderId: "694422433583",
+  messagingSenderId: process.env.messagingSenderId,
 
-  appId: "1:694422433583:web:18fbfd1a46d10b2339bbda",
+  appId: process.env.appId,
 };
 
 const app = initializeApp(firebaseConfig);
