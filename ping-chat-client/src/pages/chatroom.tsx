@@ -1,7 +1,7 @@
 "use client"; // This is a client component
 import React, { useState, useEffect } from "react";
 import ChatMessage from "../components/chatmessage";
-import "tailwindcss/tailwind.css";
+// import "tailwindcss/tailwind.css";
 import app from "../utilities/firebase";
 import { getAuth, signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";

@@ -1,6 +1,6 @@
 import ChatRoom from "../pages/chatroom";
 import SignIn from "@/pages/signin";
-import "tailwindcss/tailwind.css";
+// import "tailwindcss/tailwind.css";
 
 function App() {
   return (
