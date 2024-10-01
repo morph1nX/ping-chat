@@ -1,18 +1,14 @@
 import ChatRoom from "../pages/chatroom";
-import SignUp from "@/pages/signup";
-import "tailwindcss/tailwind.css"
+import SignIn from "@/pages/signin";
+import "tailwindcss/tailwind.css";
 
 function App() {
-
-return (
-  <div>
-<SignUp />
-{/* <ChatRoom /> */}
-  </div>
-)
-
-
+  return (
+    <div>
+      <SignIn />
+      {/* <ChatRoom /> */}
+    </div>
+  );
 }
-
 
 export default App;
